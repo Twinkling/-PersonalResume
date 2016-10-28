@@ -5,15 +5,18 @@
     <title>Test Project</title>
 </head>
 <body>
-    <div id='file'></div>
+    <div id='file'>看到这句话就表示ajax请求获取失败了！</div>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript">
         $.ajax({
-            url: 'test.json'
+            url: 'json/file.json'
             ,dataType: 'json'
-            ,success: function(data) {
+            ,success: function(data, textStatus, jqXHR) {
                 var json = data;
                 $('#file').html(json.title);
+            }
+            ,error: function(XMLHttpRequest, textStatus, errorThrown) {
+                $('#file').after('<span>Message: ' + textStatus + '</span>');
             }
         });
     </script>
