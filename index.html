@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Personal Resume</title>
+    <title>Test Project</title>
 </head>
 <body>
-    <p>This is personal resume.</p>
+    <div id='file'></div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: 'test.json'
+            ,dataType: 'json'
+            ,success: function(data) {
+                var json = data;
+                $('#file').html(json.title);
+            }
+        });
+    </script>
 </body>
 </html>
